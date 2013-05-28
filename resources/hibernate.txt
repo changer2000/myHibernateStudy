@@ -1,0 +1,15 @@
+mysqld --console
+
+mysql -u root -p???
+
+mysqladmin -u root -p??? shutdown
+
+
+drop database if exists hibernate;
+create database hibernate default character set utf8;
+
+create table events(
+event_id int auto_increment primary key,
+event_date timestamp,
+title varchar(100)
+) engine=InnoDB;
