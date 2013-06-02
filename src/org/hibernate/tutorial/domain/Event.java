@@ -1,6 +1,8 @@
 package org.hibernate.tutorial.domain;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class Event {
@@ -9,9 +11,22 @@ public class Event {
 		super();
 	}
 	
+	public void addPerson(Person p) {
+		this.getParticipants().add(p);
+		p.getEvents().add(this);
+	}
+	
+	public void removePerson(Person p) {
+		this.getParticipants().remove(p);
+		p.getEvents().remove(this);
+	}
+	
 	private Integer id;
 	private String title;
 	private Date date;
+	private Set<Person> participants = new HashSet<Person>();
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -29,6 +44,12 @@ public class Event {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	protected Set<Person> getParticipants() {
+		return participants;
+	}
+	protected void setParticipants(Set<Person> participants) {
+		this.participants = participants;
 	}
 	
 }
