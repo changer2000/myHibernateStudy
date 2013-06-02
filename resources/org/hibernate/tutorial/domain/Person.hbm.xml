@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+	
+<hibernate-mapping package="org.hibernate.tutorial.domain">
+	<class name="Person" table="person">
+		<id name="id" column="person_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="age"></property>
+		<property name="firstName" column="first_name"></property>
+		<property name="lastName" column="last_name"></property>
+		
+		<set name="events" table="person_event">
+			<key column="person_id"></key>
+			<many-to-many column="event_id" class="Event"></many-to-many>
+		</set>
+		
+		<set name="emailAddress" table="person_email_addr">
+			<key column="person_id"></key>
+			<element type="string" column="email_addr"></element>
+		</set>
+	</class>
+</hibernate-mapping>

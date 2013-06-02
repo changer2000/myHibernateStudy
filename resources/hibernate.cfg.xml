@@ -17,6 +17,6 @@
 		<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
 		
 		<mapping resource="org/hibernate/tutorial/domain/Event.hbm.xml"/>
-		
+		<mapping resource="org/hibernate/tutorial/domain/Person.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

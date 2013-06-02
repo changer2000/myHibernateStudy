@@ -9,7 +9,26 @@ drop database if exists hibernate;
 create database hibernate default character set utf8;
 
 create table events(
-event_id int auto_increment primary key,
-event_date timestamp,
-title varchar(100)
+	event_id int auto_increment primary key,
+	event_date timestamp,
+	title varchar(100)
 ) engine=InnoDB;
+
+create table person(
+	person_id int auto_increment primary key,
+	age int,
+	first_name varchar(100),
+	last_name varchar(100)
+) engine=InnoDB;
+
+create table person_event(
+	person_id int,
+	event_id int,
+	primary key (person_id, event_id)
+) engine=InnoDb;
+
+create table person_email_addr(
+	person_id int,
+	email_addr varchar(100),
+	primary key (person_id, email_addr)
+) engine=InnoDb;
